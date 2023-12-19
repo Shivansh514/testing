@@ -1,0 +1,14 @@
+resources:
+  - name: {{ .Values.namePrefix }}_bag
+    type: PropertyBag
+    configuration:
+      releaseVersion: ""
+      
+pipelines:
+  - name: hello_world
+    steps:
+      - name: first
+        type: Bash
+        execution:
+          onStart:
+            - echo "Hello Shivansh"
