@@ -2,9 +2,9 @@ resources:
   - name: Image_1
     type: Image 
     configuration:         
-      registry: PSSG_DockerRegistry           
-      imageName: docker/jfreq_win             
-      imageTag: latest
+      registry:            
+      imageName:              
+      imageTag: 
 
 pipelines:
   - name: pipelines_Image_1
@@ -14,10 +14,8 @@ pipelines:
         configuration:
           nodePool: win_2019
           inputResources:
-            - name: Image_1
+            - name: 
         execution:
           onExecute:
             - write_output "executing step..."
-            - if($Image_1_isTrigger -ne "true"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+            
