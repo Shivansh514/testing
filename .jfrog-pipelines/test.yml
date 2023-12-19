@@ -1,28 +1,23 @@
-resources:
-  - name: Aql_ART_1
-    type: Aql
-    configuration:
-      addedProperties:
-        key1: value1
-        key2: value2
-      mappings:
-        - name: mapping1
-          input: IN
-          output: test1
-        - name: mapping2
-          input: IN
-          output: test2
+resources:  
+  - name: Image_1
+    type: Image 
+    configuration:         
+      registry: PSSG_DockerRegistry           
+      imageName: docker/jfreq_win             
+      imageTag: latest
 
 pipelines:
-  - name: pipelines_ART_1
+  - name: pipelines_Image_1
     steps:
-      - name: step_ART_1
+      - name: step_Image_1
         type: PowerShell
         configuration:
           nodePool: win_2019
           inputResources:
-            - name: Aql_ART_1
-              trigger: true
+            - name: Image_1
         execution:
           onExecute:
             - write_output "executing step..."
+            - if($Image_1_isTrigger -ne "true"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
