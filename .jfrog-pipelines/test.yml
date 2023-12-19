@@ -5,7 +5,7 @@ resources:
       releaseVersion: ""
       
 pipelines:
-  - name: hello_world
+  - name: intro_hello_world
     steps:
       - name: first
         type: Bash
