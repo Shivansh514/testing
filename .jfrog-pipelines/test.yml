@@ -1,37 +1,30 @@
 resources:
-  - name: myAqlResource
+  - name: Aql_ART_1
     type: Aql
     configuration:
-      
-  - name: myReleaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: myDistributionIntegration
-      name: name
-      version: '1'
+      sourceArtifactory: myArtifactoryIntegration
+      query: items.find({"@build.name":{"$eq":"art"}})
+      addedProperties:
+        key1: value1
+        key2: value2
+      mappings:
+        - name: mapping1
+          input: IN
+          output: test1
+        - name: mapping2
+          input: IN
+          output: test2
 
 pipelines:
-  - name: pipelineToUpdateResource
+  - name: pipelines_ART_1
     steps:
-      - name: myBashStep
-        type: Bash
+      - name: step_ART_1
+        type: PowerShell
         configuration:
-          integrations:
-            - name: myArtifactoryIntegration
-          outputResources:
-            - name: myAqlResource
+          nodePool: win_2019
+          inputResources:
+            - name: Aql_ART_1
+              trigger: true
         execution:
           onExecute:
-            - write_output myAqlResource query='hello'
-
-  - name: CreateReleaseBundlePipeline
-    configuration:
-      inputResources:
-        - name: myAqlResource
-      outputResources:
-        - name: myReleaseBundle
-    steps:
-      - name: myCreateReleaseBundleStep
-        type: CreateReleaseBundle
-        configuration:
-          
+            - write_output "executing step..."
