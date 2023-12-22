@@ -1,8 +1,20 @@
+resources:
+  - name: {{ .Values.namePrefix }}_bag
+    type: PropertyBag
+    configuration:
+      releaseVersion: ""
+
 pipelines:
-  - name: intro_hello_world
+  - name: hello_world
     steps:
       - name: first
-        type: powershell 
+        type: Powershell
         execution:
-          onStart:
-            - Write-Host "Hello, World!"
+          onExecute:
+            - Write-Output "hello"
+    steps:
+      - name: second
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Hello World"
