@@ -13,11 +13,11 @@ pipelines:
         execution:
           onExecute:
             - echo "hello"
-      - name: second
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: first
-        execution:
-          onExecute:
-            - echo "Hello World"
+      # - name: second
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: first
+      #   execution:
+      #     onExecute:
+      #       - echo "Hello World"
