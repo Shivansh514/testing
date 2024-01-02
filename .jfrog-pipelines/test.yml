@@ -6,7 +6,7 @@ resources:
       chronological: true
 
 pipelines:
-  - name: hello_world
+  - name: shivansh_world
     steps:
       - name: first
         type: Bash
