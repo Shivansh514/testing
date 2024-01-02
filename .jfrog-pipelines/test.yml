@@ -11,7 +11,7 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - Echo "hello"
+            - echo "hello"
       - name: second
         type: Bash
         execution:
