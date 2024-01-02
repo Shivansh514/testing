@@ -3,6 +3,7 @@ resources:
     type: PropertyBag
     configuration:
       releaseVersion: ""
+      chronological: true
 
 pipelines:
   - name: hello_world
