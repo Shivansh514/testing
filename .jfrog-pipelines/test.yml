@@ -3,7 +3,7 @@ resources:
     type: PropertyBag
     configuration:
       releaseVersion: ""
-      chronological: true
+      
 
 pipelines:
   - name: shivansh_world
@@ -16,8 +16,9 @@ pipelines:
       - name: second
         type: Bash
         configuration:
+          chronological: true
           inputSteps:
-            - name: first
+            - name: first    
         execution:
           onExecute:
             - echo "Hello World"
