@@ -8,10 +8,10 @@ pipelines:
   - name: hello_world
     steps:
       - name: first
-        type: Powershell
+        type: Bash
         execution:
           onExecute:
-            - Write-Output "hello"
+            - Echo "hello"
       - name: second
         type: Bash
         execution:
