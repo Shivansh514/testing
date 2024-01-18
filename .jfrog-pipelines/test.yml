@@ -79,4 +79,20 @@ pipelines:
         execution:
           onExecute:
             - echo "Hello World"
+      - name: eleventh
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: tenth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: twelveth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: eleventh    
+        execution:
+          onExecute:
+            - echo "Hello World"
       
