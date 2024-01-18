@@ -1,10 +1,3 @@
-resources:
-  - name: {{ .Values.namePrefix }}_bag
-    type: PropertyBag
-    configuration:
-      releaseVersion: ""
-      
-
 pipelines:
   - name: testing_world
     steps:
@@ -19,6 +12,70 @@ pipelines:
           chronological: true
           inputSteps:
             - name: first    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: third
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: second
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: fourth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: third    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: fifth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: fourth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: sixth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: fifth    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: seventh
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: sixth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: eighth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: seventh    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: ninth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: eighth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: tenth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: ninth    
         execution:
           onExecute:
             - echo "Hello World"
