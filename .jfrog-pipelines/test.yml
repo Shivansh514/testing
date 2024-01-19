@@ -2,7 +2,7 @@ pipelines:
   - name: testing_world
     steps:
       - name: first
-        type: Bash
+        type: PowerShell
         execution:
           onExecute:
             - echo "hello"
