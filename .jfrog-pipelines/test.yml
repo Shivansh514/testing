@@ -1,8 +1,8 @@
 pipelines:
   - name: testing_world
     steps:
-      - name: one
-        type: Powershell
+      - name: first
+        type: Bash
         execution:
           onExecute:
             - echo "hello"
@@ -11,7 +11,7 @@ pipelines:
         configuration:
           chronological: true
           inputSteps:
-            - name: one    
+            - name: first    
         execution:
           onExecute:
             - echo "Hello World"
