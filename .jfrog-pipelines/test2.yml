@@ -1,0 +1,98 @@
+pipelines:
+  - name: testing2_world
+    steps:
+      - name: first
+        type: Bash
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: second
+        type: Bash
+        configuration:
+          chronological: true
+          inputSteps:
+            - name: first    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: third
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: second
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: fourth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: third    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: fifth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: fourth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: sixth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: fifth    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: seventh
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: sixth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: eighth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: seventh    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: ninth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: eighth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: tenth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: ninth    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      - name: eleventh
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: tenth
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: twelveth
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: eleventh    
+        execution:
+          onExecute:
+            - echo "Hello World"
+      
