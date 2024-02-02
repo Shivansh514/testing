@@ -11,7 +11,7 @@ pipelines:
         configuration:
           chronological: true
           inputSteps:
-            - name: first    
+            - name: one    
         execution:
           onExecute:
             - echo "Hello World"
