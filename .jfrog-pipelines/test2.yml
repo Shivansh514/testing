@@ -14,7 +14,7 @@ pipelines:
             - name: myResource
         execution:
           onExecute:
-            - write_output myResource runNumber=${run_number}
+            - write_output myResource runNumber=${run_created_at}
             - echo "test"
       - name: step1
         type: Bash
