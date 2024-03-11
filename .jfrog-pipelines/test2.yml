@@ -1,6 +1,8 @@
 resources:
   - name: myResource
     type: PropertyBag
+    configuration:
+      endTime: 0
 
 pipelines:
   - name: myPipeline
