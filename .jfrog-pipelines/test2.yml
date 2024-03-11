@@ -14,6 +14,7 @@ pipelines:
         execution:
           onExecute:
             - write_output myResource startTime=${run_created_at}
+            - add_pipeline_variables startTime=${run_created_at}
             - echo "test"
       - name: step1
         type: Bash
