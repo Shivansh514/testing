@@ -1,98 +1,35 @@
+resources:
+  - name: myResource
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+
 pipelines:
-  - name: testing2_world
+  - name: myPipeline
     steps:
-      - name: first
-        type: Powershell
-        execution:
-          onExecute:
-            - echo "hello"
-      - name: second
+      - name: input1
         type: Bash
         configuration:
-          chronological: true
-          inputSteps:
-            - name: first    
+          outputResources:
+            - name: myResource
         execution:
           onExecute:
-            - echo "Hello World"
-      - name: third
+            - write_output myResource runNumber=${run_number}
+            - echo "test"
+      - name: step1
         type: Bash
         configuration:
-          inputSteps:
-            - name: second
+          inputResources:
+            - name: myResource
+              newVersionOnly: true
         execution:
           onExecute:
-            - echo "hello"
-      - name: fourth
+            - echo "test"
+      - name: step2
         type: Bash
         configuration:
-          inputSteps:
-            - name: third    
+          inputResources:
+            - name: myResource
         execution:
           onExecute:
-            - echo "Hello World"
-      - name: fifth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: fourth
-        execution:
-          onExecute:
-            - echo "hello"
-      - name: sixth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: fifth    
-        execution:
-          onExecute:
-            - echo "Hello World"
-      - name: seventh
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: sixth
-        execution:
-          onExecute:
-            - echo "hello"
-      - name: eighth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: seventh    
-        execution:
-          onExecute:
-            - echo "Hello World"
-      - name: ninth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: eighth
-        execution:
-          onExecute:
-            - echo "hello"
-      - name: tenth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: ninth    
-        execution:
-          onExecute:
-            - echo "Hello World"
-      - name: eleventh
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: tenth
-        execution:
-          onExecute:
-            - echo "hello"
-      - name: twelveth
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: eleventh    
-        execution:
-          onExecute:
-            - echo "Hello World"
-      
+            - echo "test"
