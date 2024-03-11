@@ -2,7 +2,7 @@ resources:
   - name: myResource
     type: PropertyBag
     configuration:
-      Version: ""
+      Version: "1.54.2"
 pipelines:
   - name: myPipeline
     steps:
