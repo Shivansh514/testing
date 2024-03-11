@@ -13,9 +13,11 @@ pipelines:
             - name: myResource
         execution:
           onExecute:
-            - write_output myResource endTime=${run_created_at}
-            - write_output myResource startTime=${startTime}
+            #- write_output myResource endTime=${run_created_at}
+            #- write_output myResource startTime=${startTime}
+            - echo "{\"startTime\":\"${run_created_at}\"}" > myFile.json
             - echo "test"
+            - add_pipelines_files myFile.json myResource
       - name: step1
         type: Bash
         configuration:
@@ -25,6 +27,8 @@ pipelines:
         execution:
           onExecute:
             - echo "test"
+            - restore_pipelines_files myResource
+            - cat myResource
       - name: step2
         type: Bash
         configuration:
